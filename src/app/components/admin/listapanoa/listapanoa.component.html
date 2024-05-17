@@ -1,0 +1,134 @@
+<!-- JUMBOTRON -->
+<div class="container" style="margin-top: 100px;" *ngIf="reklamniPanoi.length === 0">
+  <div class="jumbotron">
+    <h1 class="display-4">Nema podataka za prikaz!</h1>
+    <hr class="my-4">
+    <p class="lead">Trenutno nema podataka za prikaz na ovoj stranici.</p>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 100px;" *ngIf="reklamniPanoi.length != 0">
+  <section id="gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+            <div class="form-outline form-floating d-flex align-items-center">
+              <select class="form-control form-control-lg m-2" formControlName="grad" (change)="onGradChange($event)">
+                <option selected>Svi gradovi</option>
+                <option *ngFor="let grad of gradovi">{{ grad }}</option>
+              </select>
+                <label class="form-label" for="grad">Odaberite Grad</label>
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 mb-4" *ngFor="let pano of reklamniPanoi">
+          <div class="card">
+            <img [src]="pano.urlSlike" alt="" class="card-img-top">
+            <div class="card-body">
+              <!-- <h5 class="card-title">Id: {{ pano.id }}</h5> -->
+              <h5 class="card-title">Grad: {{ pano.grad }}</h5>
+              <p class="card-text">Zona: {{ pano.zona }}</p>
+              <p class="card-text">Dimenzije: {{ pano.dimenzija }}</p>
+              <p class="card-text">Osvetljenost: {{ pano.osvetljenost }}</p>
+              <p class="card-text">Cijena: {{ pano.cijena }}</p>
+              <p style="visibility: hidden;">Id: {{ pano.id }}</p>
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="openPopup(pano.id, pano.urlSlike)">Azuriraj
+              </button>
+
+              <button class="btn btn-danger m-lg-2" (click)="deleteReklamniPano(pano.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ </div>
+
+<!-- modalni dijalog  -->
+ <div
+    class="modal modal-overlay"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display': displayStyleEdit}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Azurirajte reklamni pano</h4>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]='addForm' (submit)="handleSubmit()" class="mt-5 mb-5">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-outline form-floating">
+                  <input type="text" id="adresa" placeholder="Adresa"
+                  class="form-control form-control-lg m-2"
+                  formControlName="adresa"/>
+                  <label class="form-label" for="adresa">Adresa</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-outline form-floating">
+                  <input type="text" id="grad" placeholder="Grad"
+                  class="form-control form-control-lg m-2"
+                  formControlName="grad"/>
+                  <label class="form-label" for="grad">Grad</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-outline form-floating">
+                  <input type="text" id="dimenzija" placeholder="Dimenzija"
+                  class="form-control form-control-lg m-2"
+                  formControlName="dimenzija"/>
+                  <label class="form-label" for="dimenzija">Dimenzija</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <input type="text" id="zona" placeholder="Zona"
+                  class="form-control form-control-lg m-2"
+                  formControlName="zona"/>
+                  <label class="form-label" for="zona">Zona</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <input type="text" id="cijena" placeholder="Cijena"
+                  class="form-control form-control-lg m-2"
+                  formControlName="cijena"/>
+                  <label class="form-label" for="cijena">Cijena</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <select class="select form-control-lg" style="margin-left: 10px; margin-top: 10px;"
+                      formControlName="osvetljenost">
+                        <option value="" disabled selected>Osvetljenost</option>
+                        <option value="Velika">Velika</option>
+                        <option value="Srednja">Srednja</option>
+                        <option value="Mala">Mala</option>
+                      </select>
+                </div>
+              </div>
+
+            </div>
+            <div class="mt-4 pt-2">
+              <input class="btn btn-primary btn-lg" type="submit" value="Potvrdi"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopupEdit()">Close</button>
+        </div>
+      </div>
+    </div>
+</div>

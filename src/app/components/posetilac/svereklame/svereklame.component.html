@@ -1,0 +1,31 @@
+<!-- JUMBOTRON -->
+<div class="container" style="margin-top: 100px;" *ngIf="reklame.length == 0">
+  <div class="jumbotron">
+    <h1 class="display-4">Nema podataka za prikaz!</h1>
+    <hr class="my-4">
+    <p class="lead">Trenutno nema podataka za prikaz na stranici <i>Sve reklame</i>.</p>
+  </div>
+</div>
+<div class="container" style="margin-top: 100px;" *ngIf="reklame.length != 0">
+  <section id="gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-2" *ngFor="let reklama of reklame">
+          <div class="col">
+            <div class="card">
+              <img [src]="reklama.urlSlike" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ </div>

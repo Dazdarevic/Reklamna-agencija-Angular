@@ -1,0 +1,81 @@
+<div class="container emp-profile" style="margin-top: 100px;">
+  <form method="post">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="profile-img">
+                <img [src]="userInfo?.profilna" alt="Profilna slika" style="border-radius: 50%;"/>
+
+              </div>
+          </div>
+          <div class="col-md-6">
+              <div class="profile-head">
+                          <h5>
+                            {{ userInfo?.ime }} {{ userInfo?.prezime}}
+                          </h5>
+                          <h6>
+                            {{ userInfo?.uloga }}
+                          </h6>
+                  <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Moji podaci</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="profile-work">
+                  <p>Datum rodjenja</p>
+                  <p>{{ userInfo?.datumRodjenja }}</p><br/>
+              </div>
+          </div>
+          <div class="col-md-8">
+              <div class="tab-content profile-tab" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Id</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{ userInfo?.id }}</p>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Ime</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{ userInfo?.ime }} {{ userInfo?.prezime}}</p>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Email adresa</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{ userInfo?.email }}</p>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>Broj telefona</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{ userInfo?.brTel }}</p>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label>uloga</label>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <p>{{ userInfo?.uloga }}</p>
+                                  </div>
+                              </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+</div>

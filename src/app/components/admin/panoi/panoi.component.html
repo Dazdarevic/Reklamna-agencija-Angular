@@ -1,0 +1,89 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration"
+         style="margin-top: 50px; margin-bottom: 50px;  background-color: #004a99; border-radius: 15px;">
+         <div class="card-body p-4 p-md-5">  <!-- Forma za unos -->
+          <h3 class="mb-4 pb-2 pb-md-0 mb-md-5" style="color: aliceblue;">
+            Dodaj novi pano
+          </h3>
+
+          <form [formGroup]='addForm' (submit)="handleSubmit()" class="mt-5 mb-5">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-outline form-floating">
+                  <input type="text" id="adresa" placeholder="Adresa"
+                  class="form-control form-control-lg m-2"
+                  formControlName="adresa"/>
+                  <label class="form-label" for="adresa">Adresa</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-outline form-floating">
+                  <input type="text" id="grad" placeholder="Grad"
+                  class="form-control form-control-lg m-2"
+                  formControlName="grad"/>
+                  <label class="form-label" for="grad">Grad</label>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-outline form-floating">
+                  <input type="text" id="dimenzija" placeholder="Dimenzija"
+                  class="form-control form-control-lg m-2"
+                  formControlName="dimenzija"/>
+                  <label class="form-label" for="dimenzija">Dimenzija</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <input type="text" id="zona" placeholder="Zona"
+                  class="form-control form-control-lg m-1"
+                  formControlName="zona"/>
+                  <label class="form-label" for="zona">Zona</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <input type="text" id="cijena" placeholder="Cijena"
+                  class="form-control form-control-lg m-1"
+                  formControlName="cijena"/>
+                  <label class="form-label" for="cijena">Cijena</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <input type="file" id="img" formControlName="slika"
+                      class="form-control form-control-lg m-2"
+                      (change)="getFile($event)"
+                      />
+                    <label class="form-label" for="img">Profilna</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-outline form-floating">
+                  <select class="select form-control-lg" style="
+                  margin-top: 10px;"
+                      formControlName="osvetljenost">
+                        <option value="" disabled selected>Osvetljenost</option>
+                        <option value="Velika">Velika</option>
+                        <option value="Srednja">Srednja</option>
+                        <option value="Mala">Mala</option>
+                      </select>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-2">
+              <input class="btn btn-primary btn-lg" type="submit" value="Submit"/>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,101 @@
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top d-flex align-items-center">
+  <div class="container d-flex justify-content-between">
+
+    <div class="mt-2">
+      <h1><a href="#">
+        <img src="https://res.cloudinary.com/dzkinsdk2/image/upload/v1715891980/da-net7/eljf730pvo1sfqptn1uv.png"
+         width="250" height="170" style="margin: 0;"/>
+      </a></h1>
+    </div>
+    <nav [ngSwitch]="menuType" id="navbar" class="navbar">
+      <ul *ngSwitchCase="'default'">
+        <li class="nav-item" routerLinkActive="active current active">
+          <a class="nav-link" routerLink="/">Pocetna</a></li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/login">Prijava</a></li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/signup">Registracija</a></li>
+      </ul>
+
+      <ul *ngSwitchCase="'Admin'">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/listapanoa" dropdownToggle>
+            Panoi
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">
+              <a class="nav-link" routerLink="/listapanoa">Svi panoi</a>
+            </li>
+            <li class="dropdown-item">
+              <a class="nav-link" routerLink="/panoi">Dodaj novi pano</a>
+            </li>
+            <!-- Dodajte ostale linkove kao što je potrebno -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/request-for-reg" dropdownToggle>
+            Zahtevi
+          </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item">
+              <a class="nav-link" routerLink="/request-for-reg">Zahtevi za Registraciju</a>
+            </li>
+            <li class="dropdown-item">
+              <a class="nav-link" routerLink="/request-for-ads">Zahtevi za reklame</a>
+            </li>
+            <!-- Dodajte ostale linkove kao što je potrebno -->
+          </ul>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/admin-fakture">Moje fakture</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/svereklame">Sve reklame</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/myprofile">Moj profil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="login" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+
+      <ul *ngSwitchCase="'Klijent'">
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/moje-reklame">Moje reklame</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/svereklame">Sve reklame</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/reklamnipano">Reklamni panoi</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/klijent-fakture">Moje fakture</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/myprofile">Moj profil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="login" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+
+      <ul *ngSwitchCase="'Posetilac'">
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/svereklame">Sve reklame</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="/myprofile">Moj profil</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active current">
+          <a class="nav-link" routerLink="login" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+
+
+  </div>
+</header><!-- #header -->

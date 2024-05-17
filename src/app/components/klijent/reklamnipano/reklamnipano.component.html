@@ -1,0 +1,116 @@
+<!-- JUMBOTRON -->
+<div class="container" style="margin-top: 100px;" *ngIf="reklamniPanoi.length == 0">
+  <div class="jumbotron">
+    <h1 class="display-4">Nema podataka za prikaz!</h1>
+    <hr class="my-4">
+    <p class="lead">Trenutno nema podataka za prikaz na stranici <i>Reklamni panoi</i>.</p>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 100px;" *ngIf="reklamniPanoi.length != 0">
+  <section id="gallery">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+            <div class="form-outline form-floating d-flex align-items-center">
+              <select class="form-control form-control-lg m-2" formControlName="grad" (change)="onGradChange($event)">
+                <option selected>Svi gradovi</option>
+                <option *ngFor="let grad of gradovi">{{ grad }}</option>
+              </select>
+                <label class="form-label" for="grad">Odaberite Grad</label>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mb-4" *ngFor="let pano of reklamniPanoi">
+          <div class="card">
+            <img [src]="pano.urlSlike" alt="" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Adresa: {{ pano.adresa }}</h5>
+              <p class="card-text">Grad: {{ pano.grad }}</p>
+              <p class="card-text">Zona: {{ pano.zona }}</p>
+              <p class="card-text">Dimenzije: {{ pano.dimenzija }}</p>
+              <p class="card-text">Osvetljenost: {{ pano.osvetljenost }}</p>
+              <p class="card-text">Cijena: {{ pano.cijena }}</p>
+              <p style="visibility: hidden;">Id: {{ pano.id }}</p>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="openPopup(pano.id)">Kreiraj reklamu
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ </div>
+
+<!-- modalni dijalog  -->
+ <div
+    class="modal modal-overlay"
+    tabindex="-1"
+    role="dialog"
+    [ngStyle]="{'display': displayStyleEdit}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Kreirajte reklamu</h4>
+          <p class="modal-content p-2">Svaku reklamu treba da odobri admin.</p>
+        </div>
+        <div class="modal-body">
+
+          <form [formGroup]='addForm' (submit)="handleSubmit()" class="mt-5 mb-5">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-outline form-floating">
+                  <input type="text" id="opis" placeholder="Opis"
+                  class="form-control form-control-lg m-2"
+                  formControlName="opis"/>
+                  <label class="form-label" for="adresa">Opis</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline form-floating">
+                  <input type="file" id="img"
+                    class="form-control form-control-lg m-1"
+                    (change)="getFile($event)" formControlName="slika"
+                    />
+                  <label class="form-label" for="img">Slika</label>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-outline form-floating">
+                  <p class="m-lg-2">Od</p>
+                <input type="date" class="form-control form-control-lg m-1"
+                placeholder="OdDatum" id="odDatum"
+                formControlName="odDatum"/>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-outline form-floating">
+                  <p class="m-lg-2">Do</p>
+                <input type="date" class="form-control form-control-lg m-1"
+                placeholder="OdDatum" id="doDatum"
+                formControlName="doDatum"/>
+              </div>
+            </div>
+
+          </div>
+          </div>
+        </div>
+
+            <div class="mt-4 pt-2">
+              <input class="btn btn-primary btn-lg" type="submit" value="Potvrdi"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closePopupEdit()">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
