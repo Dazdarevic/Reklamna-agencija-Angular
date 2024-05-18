@@ -37,6 +37,16 @@ export class AdminService {
     return this.http.get<any[]>(this.baseUrl + "/AdminAgencije/gradovi", httpOptions);
   }
 
+  getGradoviBezReklama(): Observable<any[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Basic ' + btoa(environment.username + ':' + environment.password),
+      })
+    };
+    return this.http.get<any[]>(this.baseUrl + "/AdminAgencije/gradovi-bez-reklama", httpOptions);
+  }
+
   getAllInactiveKorisnici(): Observable<any[]> {
     const httpOptions = {
       headers: new HttpHeaders({

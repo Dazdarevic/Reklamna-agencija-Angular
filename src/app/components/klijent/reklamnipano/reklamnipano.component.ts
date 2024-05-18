@@ -62,7 +62,7 @@ export class ReklamnipanoComponent implements OnInit {
     );
   }
   fetchGradovi(): void {
-    this.reklamniPanoiService.getGradovi().subscribe(
+    this.reklamniPanoiService.getGradoviBezReklama().subscribe(
       data => {
         this.gradovi = data;
       },
